@@ -1,0 +1,226 @@
+#simple echo
+echo "hello"
+
+#echo system date
+echo Hello world day is $(date +%A)
+
+#take variable during running script
+echo hello $1
+
+#another example
+firstname=$1
+surname=$2
+echo hello $firstname $lastname
+
+#mathematical expression
+firstnumber=$1
+secondnumbe=$2
+echo the sum is $(($firstnumber+$secondnumber))
+
+#take input while script is executing
+echo -n "your first name"
+read firstname
+echo hello $firstname how are you ?
+
+#use if else
+if [ "$firstname == "mark" ]
+then echo "i know you"
+else echo hello $firstname
+fi
+
+#while loop
+count=0
+while [ $count -lt 100 ];do
+echo $count 
+let count=count+1
+done
+
+#for loop
+for count in {0..100};do
+echo $count
+mkdir Folder$count
+let count=count+1
+done
+
+#for loop with increment
+for count in {0..1000..2};do
+echo $count
+let count=count+1
+done
+
+#interesting use of loop and if else and give user option
+choice=4
+echo "1.john"
+echo "2.keeanu"
+echo "3.gadot"
+echo -n "Please choose an option (1, 2 or 3) "
+
+while [ $choice -eq 4 ] ; then
+read choice
+
+if [ $choice -eq 1 ] ; then
+  echo "john"
+else
+  if [ $choice -eq 2 ] ; then
+    echo "keeanu"
+  else
+    if [ $choice -eq 3 ] ; then
+      echo "gadot"
+    else
+      echo "Please enter a choice between 1 to 3"
+      echo "1.john"
+      echo "2.keeanu"
+      echo "3.gadot"
+      echo -n "Please choose an option (1, 2 or 3) "
+      choice=4
+     fi
+   fi
+fi
+done
+ 
+#menu in bash script
+E='echo -e';e='echo -en';trap "R;exit" 2
+   ESC=$( $e "\e")
+  TPUT(){ $e "\e[${1};${2}H";}
+ CLEAR(){ $e "\ec";}
+ CIVIS(){ $e "\e[?25l";}
+  DRAW(){ $e "\e%@\e(0";}
+ WRITE(){ $e "\e(B";}
+  MARK(){ $e "\e[7m";}
+UNMARK(){ $e "\e[27m";}
+R(){ CLEAR ;stty sane;$e "\ec\e[37;44m\e[J";};
+HEAD(){ DRAW
+        for each in $(seq 1 13);do
+        $E "    X                                         X"
+        done
+        WRITE;MARK;TPUT 13 5
+        $E "BASH SELECTION MENU                     ";UNMARK;}
+        i=0;  CLEAR;  CIVIS;NULL=/dev/null
+FOOT(){ MARK;TPUT 13  5
+        printf "ENTER - SELECT,NEXT                       X";UNAMRK;}
+ARROW(){  read -s -n3 key 2>/dev/null >&2
+          if [[ $key = $ESC[A ]];then echo up;fi
+          if [[ $key = $ESC[B ]];then echo dn;fi;}
+  M0(){ TPUT 4 20; $e "login info";}
+  M1(){ TPUT 5 20; $e "Network";}
+  M2(){ TPUT 6 20; $e "Disk";}
+  M3(){ TPUT 7 20; $e "Routing";}
+  M4(){ TPUT 8 20; $e "Time";}
+  M5(){ TPUT 9 20; $e "ABOUT";}
+  M6(){ TPUT 10 20; $e "EXIT";}
+    LM=6
+  MENU(){for each in $(seq 0 $LM);do M${each};done;}
+  POS(){ if [[ $cur == up ]];then ((i--));fi
+         if [[ $curl == dn ]];then ((i++));fi
+         if [[ $curl -lt 0 ]];then i=$LM;fi
+         if [[ $curl -gt $LM ]];then i=0;fi}
+ REFRESH(){
+         
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
