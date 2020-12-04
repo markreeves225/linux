@@ -114,7 +114,8 @@ ARROW(){  read -s -n3 key 2>/dev/null >&2
          if [[ $curl == dn ]];then ((i++));fi
          if [[ $curl -lt 0 ]];then i=$LM;fi
          if [[ $curl -gt $LM ]];then i=0;fi}
- REFRESH(){
+ REFRESH(){ after=$((i+1)); before=$((i--));fi
+ 
          
   
   
