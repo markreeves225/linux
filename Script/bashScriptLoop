@@ -78,7 +78,12 @@ else
    fi
 fi
 done
- 
+
+
+
+
+
+------------------------still not working-----------------------------------------------------------------------
 #menu in bash script
 E='echo -e';e='echo -en';trap "R;exit" 2
    ESC=$( $e "\e")
@@ -134,7 +139,7 @@ ARROW(){  read -s -n3 key 2>/dev/null >&2
   6) S=M6;SC;if [[ $cur == "" ]];then R;exit 0;fi;;
  esac;POS;done
             
- 
+ ------------------------------------script not working error ----------------------------------------------------------------
          
   
   
