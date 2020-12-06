@@ -1,8 +1,5 @@
 #!/bin/bash
-
-# Borrowed from https://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script
-#               by oToGamez
-#               www.pro-toolz.net
+#Menu code adapted from https://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script
 
       E='echo -e';e='echo -en';trap "R;exit" 2
     ESC=$( $e "\e")
@@ -12,13 +9,13 @@
    MARK(){ $e "\e[7m";}
  UNMARK(){ $e "\e[27m";}
       R(){ CLEAR ;stty sane;CLEAR;};
-   HEAD(){ for each in $(seq 1 15);do
+   HEAD(){ for each in $(seq 1 13);do
            $E "   \xE2\x94\x82                                          \xE2\x94\x82"
            done
            MARK;TPUT 1 5
-           $E "              DESKTOPIFY                  " ;UNMARK;
+           $E "BASH SELECTION MENU        " ;UNMARK;
            TPUT 2 5
-           $E "      SELECT A DESKTOP ENVIRONMENT        " ;UNMARK;}
+           $E "      Tech Academy        " ;UNMARK;}
            i=0; CLEAR; CIVIS;NULL=/dev/null
    FOOT(){ MARK;TPUT 15 5
            $E " UP \xE2\x86\x91 \xE2\x86\x93 DOWN    ENTER - SELECT,NEXT       ";UNMARK;}
@@ -32,14 +29,14 @@
               fi
            fi
            if [[ "$key" == "$($e \\x0A)" ]];then echo enter;fi;}
-     M0(){ TPUT  4 20; $e "Lubuntu";}
-     M1(){ TPUT  5 20; $e "Kubuntu";}
-     M2(){ TPUT  6 20; $e "Ubuntu";}
-     M3(){ TPUT  7 20; $e "Ubuntu-Budgie";}
-     M4(){ TPUT  8 20; $e "Ubuntu-Kylin";}
-     M5(){ TPUT  9 20; $e "Ubuntu-Mate";}
-     M6(){ TPUT 10 20; $e "Ubuntu-Studio";}
-     M7(){ TPUT 11 20; $e "Xubuntu";}
+     M0(){ TPUT  4 20; $e "login info";}
+     M1(){ TPUT  5 20; $e "Network";}
+     M2(){ TPUT  6 20; $e "Disk";}
+     M3(){ TPUT  7 20; $e "Routing";}
+     M4(){ TPUT  8 20; $e "Time";}
+     M5(){ TPUT  9 20; $e "About";}
+     M6(){ TPUT 10 20; $e "list";}
+     M7(){ TPUT 11 20; $e "date";}
      M8(){ TPUT 12 20; $e "EXIT   ";}
       LM=8
    MENU(){ for each in $(seq 0 $LM);do M${each};done;}
@@ -57,13 +54,13 @@ REFRESH(){ after=$((i+1)); before=$((i-1))
      SC(){ REFRESH;MARK;$S;$b;cur=`ARROW`;}
      ES(){ MARK;$e "ENTER = main menu ";$b;read;INIT;};INIT
   while [[ "$O" != " " ]]; do case $i in
-        0) S=M0;SC;if [[ $cur == enter ]];then R;$e "\n$($e lubuntu)\n";ES;fi;;
-        1) S=M1;SC;if [[ $cur == enter ]];then R;$e "\n$($e kubuntu)\n";ES;fi;;
-        2) S=M2;SC;if [[ $cur == enter ]];then R;$e "\n$($e ubuntu)\n";ES;fi;;
-        3) S=M3;SC;if [[ $cur == enter ]];then R;$e "\n$($e ubuntu-budgie)\n";ES;fi;;
-        4) S=M4;SC;if [[ $cur == enter ]];then R;$e "\n$($e ubuntu-kylin)\n";ES;fi;;
-        5) S=M5;SC;if [[ $cur == enter ]];then R;$e "\n$($e ubuntu-mate)\n";ES;fi;;
-        6) S=M6;SC;if [[ $cur == enter ]];then R;$e "\n$($e ubuntu-studio)\n";ES;fi;;
-        7) S=M7;SC;if [[ $cur == enter ]];then R;$e "\n$($e xubuntu)\n";ES;fi;;
+        0) S=M0;SC;if [[ $cur == enter ]];then R;$e "\n$(w )\n";ES;fi;;
+        1) S=M1;SC;if [[ $cur == enter ]];then R;$e "\n$(ifconfig )\n";ES;fi;;
+        2) S=M2;SC;if [[ $cur == enter ]];then R;$e "\n$(df h)\n";ES;fi;;
+        3) S=M3;SC;if [[ $cur == enter ]];then R;$e "\n$(route -n )\n";ES;fi;;
+        4) S=M4;SC;if [[ $cur == enter ]];then R;$e "\n$(date )\n";ES;fi;;
+        5) S=M5;SC;if [[ $cur == enter ]];then R;$e "\n$($e by Tech Academy)\n";ES;fi;;
+        6) S=M6;SC;if [[ $cur == enter ]];then R;$e "\n$(ls )\n";ES;fi;;
+        7) S=M7;SC;if [[ $cur == enter ]];then R;$e "\n$(date )\n";ES;fi;;
         8) S=M8;SC;if [[ $cur == enter ]];then R;exit 0;fi;;
  esac;POS;done
