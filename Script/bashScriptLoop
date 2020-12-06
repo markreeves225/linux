@@ -109,7 +109,7 @@ ARROW(){  read -s -n3 key 2>/dev/null >&2
   M5(){ TPUT 9 20; $e "ABOUT";}
   M6(){ TPUT 10 20; $e "EXIT";}
     LM=6
-  MENU(){for each in $(seq 0 $LM);do M${each};done;}
+  MENU(){ for each in $(seq 0 $LM);do M${each};done;}
   POS(){ if [[ $cur == up ]];then ((i--));fi
          if [[ $curl == dn ]];then ((i++));fi
          if [[ $curl -lt 0 ]];then i=$LM;fi
@@ -122,7 +122,7 @@ ARROW(){  read -s -n3 key 2>/dev/null >&2
             UNMARK; M$before;fi;j=$i;UNMARK;M$before;M$after;}
  INIT(){ R;HEAD;FOOT;MENU;}
  SC(){ REFRESH;MARK;$S;$b;cur='ARROW';}
- ES(){ MARK;$e "ENTER = main menu ";$b;read;INIT
+ ES(){ MARK;$e "ENTER = main menu ";$b;read;INIT;};INIT
  while [[ "$0" != " " ]];do case $i in
   0) S=M0;SC;if [[ $cur == "" ]];then R;$e "\n$(w )\n";ES;fi;;
   1) S=M1;SC;if [[ $cur == "" ]];then R;$e "\n$(ifconfig )\n";ES;fi;;
